@@ -5,6 +5,8 @@ import 'package:drove/screens/login_screen.dart';
 import 'package:drove/screens/signup_screen.dart';
 import 'package:drove/screens/welcome_screen.dart';
 import 'package:page_transition/page_transition.dart';
+import 'screens/profile.dart';
+import 'screens/update_profile.dart';
 import 'screens/welcome_screen.dart';
 
 void main() async {
@@ -45,6 +47,20 @@ class MyApp extends StatelessWidget {
             case '/dashboard':
               return PageTransition(
                 child: Dashboard(),
+                type: PageTransitionType.leftToRight,
+                settings: settings,
+              );
+              break;
+               case '/profile_screen':
+              return PageTransition(
+                child: ProfileScreen(),
+                type: PageTransitionType.leftToRight,
+                settings: settings,
+              );
+              break;
+            case '/update_profile':
+              return PageTransition(
+                child: UpdateProfileScreen(),
                 type: PageTransitionType.leftToRight,
                 settings: settings,
               );
