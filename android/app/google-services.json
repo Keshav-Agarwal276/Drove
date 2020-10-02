@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "437672637329",
+    "firebase_url": "https://drove-e14dc.firebaseio.com",
+    "project_id": "drove-e14dc",
+    "storage_bucket": "drove-e14dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437672637329:android:fa77e3aa8a0ae0d7d52030",
+        "android_client_info": {
+          "package_name": "com.example.drove"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437672637329-0h5663pja4ihuj0dflso74itmnfi4qkv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKtG-slEzrE8YMzu6PQ9s74YxGzrrTPwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437672637329-0h5663pja4ihuj0dflso74itmnfi4qkv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
