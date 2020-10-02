@@ -29,6 +29,9 @@ dependencies:
   firebase_core: ^0.5.0
   cloud_firestore: ^0.14.1+2
   firebase_auth: ^0.18.1+1
+  page_transition: ^1.1.6
+  google_sign_in: ^4.5.4
+  giffy_dialog: ^1.8.0
 
 dev_dependencies:
   flutter_test:
@@ -64,5 +67,5 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-  # For details regarding fonts from package dependencies,
+  # For details regarding fonts from package dependencies
   # see https://flutter.dev/custom-fonts/#from-packages

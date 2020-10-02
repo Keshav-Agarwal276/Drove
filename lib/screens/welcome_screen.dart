@@ -11,15 +11,12 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 10),
-            ()=>Navigator.pushReplacement(context,
-            MaterialPageRoute(builder:
-                (context) =>
-                LoginScreen()
-            )
-        )
-    );
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginScreen())));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,24 +25,47 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         width: double.infinity,
         child: Column(
           children: [
-            SizedBox(height: 100,),
-            Text('Drove',style: TextStyle(color: Colors.white60,fontSize: 75,fontWeight: FontWeight.w500),),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 100,
+            ),
+            Text(
+              'Drove',
+              style: TextStyle(
+                  color: Colors.white60,
+                  fontSize: 75,
+                  fontWeight: FontWeight.w500),
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Container(
               height: 200,
-                width: 200,
-                child:
-                Image.asset('images/logo.png'),
+              width: 200,
+              child: Image.asset('images/logo.png'),
             ),
-            SizedBox(height: 250,),
-            Text('Made By:',style: TextStyle(color: Colors.white60,fontSize: 18,fontWeight: FontWeight.w500),),
-            SizedBox(height: 15,),
-            Text('Team Ninja Turtles',style: TextStyle(color: Colors.white60,fontSize: 16,fontWeight: FontWeight.w500),),
-
+            SizedBox(
+              height: 250,
+            ),
+            Text(
+              'Made By:',
+              style: TextStyle(
+                  color: Colors.white60,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              'Team Ninja Turtles',
+              style: TextStyle(
+                  color: Colors.white60,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
