@@ -1,7 +1,7 @@
 import 'dart:async';
-
-import 'package:drove/screens/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../services/auth.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -11,10 +11,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginScreen())));
+    getUser();
   }
 
   @override
@@ -67,5 +64,19 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ),
       ),
     );
+  }
+
+  void getUser() async {
+    bool verify = await UserAuth();
+    if (verify)
+      Timer(
+          Duration(seconds: 2),
+          () => Navigator.pushNamedAndRemoveUntil(
+              context, '/dashboard', (route) => false));
+    else
+      Timer(
+          Duration(seconds: 2),
+          () => Navigator.pushNamedAndRemoveUntil(
+              context, '/login_screen', (route) => false));
   }
 }
