@@ -1,0 +1,4 @@
+0 Yawn
+1 Eye Closed
+2 Eye Open
+3 Not Yawn
