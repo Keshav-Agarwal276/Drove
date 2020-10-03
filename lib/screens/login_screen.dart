@@ -203,12 +203,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.07,
-                  child: Divider(
-                    thickness: 2.0,
-                    endIndent: 20.0,
-                    indent: 20.0,
-                    color: Colors.blueGrey,
-                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

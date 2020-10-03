@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:drove/models/bottomnav.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -7,6 +8,8 @@ import 'package:drove/helpers/camera_helper.dart';
 import 'package:drove/helpers/tflite_helper.dart';
 import 'package:drove/models/result.dart';
 import 'package:tflite/tflite.dart';
+
+int _currentIndex=0;
 
 class DetectScreen extends StatefulWidget {
   DetectScreen({Key key, this.title}) : super(key: key);
@@ -67,11 +70,11 @@ class _DetectScreenPageState extends State<DetectScreen>
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        backgroundColor: Color(0xff272B4D),
+        title: Text(widget.title,style: TextStyle(color: Colors.blueGrey),),
       ),
-      bottomNavigationBar: IconButton(icon: Icon(Icons.person), onPressed: () {
+      bottomNavigationBar: bottomnav(_currentIndex, context),
 
-        Navigator.pushNamed(context, '/profile_screen');}),
       body: FutureBuilder<void>(
         future: CameraHelper.initializeControllerFuture,
         builder: (context, snapshot) {
@@ -79,6 +82,11 @@ class _DetectScreenPageState extends State<DetectScreen>
             // If the Future is complete, display the preview.
             return Stack(
               children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: Color(0xff272B4D),
+                ),
                 CameraPreview(CameraHelper.camera),
                 _buildResultsWidget(width, outputs)
               ],
@@ -107,7 +115,7 @@ class _DetectScreenPageState extends State<DetectScreen>
         child: Container(
           height: 200.0,
           width: width,
-          color: Colors.white,
+          color: Color(0xff272B4D),
           child: outputs != null && outputs.isNotEmpty
               ? ListView.builder(
                   itemCount: outputs.length,

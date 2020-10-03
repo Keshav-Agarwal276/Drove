@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
               break;
             case '/dashboard':
               return PageTransition(
-                child:  DetectScreen(title: 'Detect Drowseyness'),
+                child:  DetectScreen(title: 'Drove'),
                 type: PageTransitionType.leftToRight,
                 settings: settings,
               );

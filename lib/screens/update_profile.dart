@@ -16,8 +16,26 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(width: double.infinity,height: 50,),
-                Text('Update Profile', style:
-                TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    IconButton(
+                        icon: Icon(Icons.keyboard_arrow_left,
+                            size: 35.0, color: Colors.blueGrey),
+                        onPressed: () => Navigator.pop(context)),
+                    Container(
+                      margin: const EdgeInsets.only(
+                        left: 100.0,
+                      ),
+                      child: Text(
+                        'Update Profile',
+                        style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 30),
                 Container(
