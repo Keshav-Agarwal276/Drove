@@ -1,4 +1,7 @@
+import 'package:drove/services/database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:giffy_dialog/giffy_dialog.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   @override
@@ -6,6 +9,31 @@ class UpdateProfileScreen extends StatefulWidget {
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+  String Contactname='';
+  String Contactno='';
+  String Gender='';
+  String uid='';
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<String> UserData() async {
+    try
+    {
+      if (_auth.currentUser != null) {
+        uid = _auth.currentUser.uid;
+        return uid;
+      }
+    }
+    catch(e){
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    UserData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +82,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
                       onChanged: (value) {
-
+                         Contactname = value;
                       },
                       style: TextStyle(color: Colors.blueGrey),
                       decoration: InputDecoration(
@@ -62,7 +90,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           Icons.person,
                           color: Colors.blueGrey,
                         ),
-                        labelText: 'User Name',
+                        labelText: 'Contact Name',
                         labelStyle:
                         TextStyle(color: Colors.blueGrey, fontSize: 22),
                         contentPadding: EdgeInsets.symmetric(
@@ -87,40 +115,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
                       onChanged: (value) {
-
-                      },
-                      style: TextStyle(color: Colors.blueGrey),
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(
-                          Icons.email,
-                          color: Colors.blueGrey,
-                        ),
-                        labelText: 'Email',
-                        labelStyle:
-                        TextStyle(color: Colors.blueGrey, fontSize: 22),
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 20.0),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide:
-                          BorderSide(color: Colors.blueGrey, width: 1.5),
-                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide:
-                          BorderSide(color: Color(0xFF311EBD), width: 3),
-                          borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                        ),
-                      )),
-                ),
-                SizedBox(height: 40,),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: TextField(
-                      onChanged: (value) {
-
+                         Gender = value;
                       },
                       style: TextStyle(color: Colors.blueGrey),
                       decoration: InputDecoration(
@@ -153,7 +148,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
                       onChanged: (value) {
-
+                             Contactno = value;
                       },
                       style: TextStyle(color: Colors.blueGrey),
                       decoration: InputDecoration(
@@ -182,17 +177,45 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                       )),
                 ),
                 SizedBox(height: 40,),
-                Container(
-                  height: 50,
-                  width: 180,
-                  child: Center(
-                      child: Text(
-                        'Update Profile',
-                        style: TextStyle(color: Colors.blueGrey, fontSize: 22),
-                      )),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color(0xFF311EBD),
+                GestureDetector(
+                  onTap: (){
+                    if(uid!='')
+                      {updateFromDatabase(Contactname, uid, Contactno,Gender);
+                      showDialog(
+                          context: context,
+                          builder: (_) => AssetGiffyDialog(
+                            image: Image.asset('images/done.gif'),
+                            title: Text(
+                              'Profile Updated',
+                              style: TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            description: Text(
+                              '',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(),
+                            ),
+                            entryAnimation: EntryAnimation.RIGHT,
+                            onlyOkButton: true,
+                            buttonOkColor: Colors.red,
+                            onOkButtonPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/profile_screen', (route) => false),
+                          ));}
+                    else
+                      print('Error in UID');
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 180,
+                    child: Center(
+                        child: Text(
+                          'Update Profile',
+                          style: TextStyle(color: Colors.blueGrey, fontSize: 22),
+                        )),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color(0xFF311EBD),
+                    ),
                   ),
                 ),
               ],

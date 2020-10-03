@@ -1,18 +1,27 @@
+import 'dart:convert';
+
 import 'package:drove/models/bottomnav.dart';
 import 'package:drove/services/auth.dart';
+import 'package:drove/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:http/http.dart' as http;
 
 int _currentIndex=1;
+Map content;
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
-String name ='no';
-String email='no';
+String name ='';
+String email='';
+String Contactname='-';
+String Contactno='-';
+String uid='';
+String Gender='-';
 class _ProfileScreenState extends State<ProfileScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -24,6 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         print(_auth.currentUser.displayName);
         email = _auth.currentUser.email;
         print(_auth.currentUser.email);
+
         return true;
       }
     }
@@ -32,11 +42,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  Future<void> getapi() async {
+    try {
+        String api = 'https://drove-e14dc.firebaseio.com/.json';
+        http.Response response = await http.get(api);
+        content =  json.decode(response.body);
+        uid = _auth.currentUser.uid;
+        setState(() {
+          Contactname = content["$uid"]["ContactName"];
+          print(Contactname);
+          Contactno = content["$uid"]["EmergencyContact"];
+          Gender = content["$uid"]["Gender"];
+          print(Gender);
+        });
+
+      }
+  catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    UserData();
+    getapi();
+    readFromDatabase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: UserData(),
         builder:(context,snapshot){
+         // Map content = snapshot.data;
           return(snapshot.hasData)?Scaffold(
             bottomNavigationBar: bottomnav(_currentIndex, context),
             backgroundColor: Color(0xff0A0E21),
@@ -85,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 70,left: 97),
-                        child: Text('User Name', style:
+                        child: Text('Contact Name', style:
                         TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.blueGrey,letterSpacing: 1.2),
                         ),
                       ),
@@ -100,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           SizedBox(width: 16,),
-                          Text(name, style:
+                          Text(Contactname, style:
                           TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
@@ -123,7 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           SizedBox(width: 16,),
-                          Text('Male', style:
+                          Text(Gender, style:
                           TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
@@ -145,7 +184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           SizedBox(width: 16,),
-                          Text('123456789', style:
+                          Text(Contactno, style:
                           TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
@@ -159,7 +198,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           GestureDetector(
                             onTap: () async{
                               if(await DeleteAccount()){
-                              print('Error in LogOut');
+                              print('Delete Account Successful');
+                              deleteFromDatabase(uid);
                               Navigator.pushNamedAndRemoveUntil(
                               context, '/login_screen', (route) => false);
                               }

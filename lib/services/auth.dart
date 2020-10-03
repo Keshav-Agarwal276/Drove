@@ -1,5 +1,8 @@
+import 'package:drove/screens/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'database.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -19,7 +22,7 @@ Future<bool> signInWithGoogle() async {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-
+    writeFromDatabase(uid);
     // Once signed in, return the UserCredential
     if (await FirebaseAuth.instance.signInWithCredential(credential) != null)
       return true;
@@ -43,6 +46,7 @@ Future<bool> signUp(String email, String password) async {
         null) {
       print((await FirebaseAuth.instance.signInWithCredential(credential))
           .toString());
+      writeFromDatabase(uid);
       return true;
     }
 
