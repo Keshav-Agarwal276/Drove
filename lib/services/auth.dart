@@ -125,8 +125,3 @@ Future<bool> DeleteAccount() async {
     }
   }
 }
-
-
-// onPressed: () async{
-
-// },

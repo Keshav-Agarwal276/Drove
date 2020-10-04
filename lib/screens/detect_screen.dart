@@ -7,9 +7,8 @@ import 'package:drove/helpers/app_helper.dart';
 import 'package:drove/helpers/camera_helper.dart';
 import 'package:drove/helpers/tflite_helper.dart';
 import 'package:drove/models/result.dart';
-import 'package:tflite/tflite.dart';
 
-int _currentIndex=0;
+int _currentIndex = 0;
 
 class DetectScreen extends StatefulWidget {
   DetectScreen({Key key, this.title}) : super(key: key);
@@ -44,26 +43,26 @@ class _DetectScreenPageState extends State<DetectScreen>
     _setupAnimation();
 
     //Subscribe to TFLite's Classify events
-    TFLiteHelper.tfLiteResultsController.stream.listen((value) {
-      value.forEach((element) {
-        _colorAnimController.animateTo(element.confidence,
-            curve: Curves.bounceIn, duration: Duration(milliseconds: 500));
-      });
+    TFLiteHelper.tfLiteResultsController.stream.listen(
+        (value) {
+          value.forEach((element) {
+            _colorAnimController.animateTo(element.confidence,
+                curve: Curves.bounceIn, duration: Duration(milliseconds: 500));
+          });
 
-      //Set Results
-      outputs = value;
+          //Set Results
+          outputs = value;
 
-      //Update results on screen
-      setState(() {
-        //Set bit to false to allow detection again
-        CameraHelper.isDetecting = false;
-
-      });
-    }, onDone: () {
-
-    }, onError: (error) {
-      AppHelper.log("listen", error);
-    });
+          //Update results on screen
+          setState(() {
+            //Set bit to false to allow detection again
+            CameraHelper.isDetecting = false;
+          });
+        },
+        onDone: () {},
+        onError: (error) {
+          AppHelper.log("listen", error);
+        });
   }
 
   @override
@@ -72,10 +71,12 @@ class _DetectScreenPageState extends State<DetectScreen>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff272B4D),
-        title: Text(widget.title,style: TextStyle(color: Colors.blueGrey),),
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.blueGrey),
+        ),
       ),
       bottomNavigationBar: bottomnav(_currentIndex, context),
-
       body: FutureBuilder<void>(
         future: CameraHelper.initializeControllerFuture,
         builder: (context, snapshot) {

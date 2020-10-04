@@ -95,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Container(
                           margin:EdgeInsets.only(left: 30,top: 50),
                           child:
-                          Text(name, style:
+                          Text(name==null?"":name, style:
                           TextStyle(fontSize: 25,fontWeight: FontWeight.w600,color: Colors.white60,letterSpacing: 1.2),
                           )
                       ),
@@ -104,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           margin:EdgeInsets.only(left: 30),
                           child:
                           Text(email, style:
-                          TextStyle(fontSize: 22,fontWeight: FontWeight.w600,color: Colors.white60,letterSpacing: 1.2),
+                          TextStyle(fontSize: 15,fontWeight: FontWeight.w600,color: Colors.white60,letterSpacing: 1.2),
                           )
                       ),
                       SizedBox(
@@ -118,13 +118,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: 45.0,
-                              child: image != null?Image.file(image):Image.asset('images/boy.png'),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(45.0),
+                                child: image != null?Image.file(image,fit: BoxFit.fill,):Image.asset('images/boy.png',fit: BoxFit.fill),
+                              )
                             ),
                           )
                       ),
                       Container(
                         margin: EdgeInsets.only(top: 70,left: 97),
-                        child: Text('Contact Name', style:
+                        child: Text('Emergency Contact Name', style:
                         TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.blueGrey,letterSpacing: 1.2),
                         ),
                       ),
@@ -140,7 +143,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           SizedBox(width: 16,),
                           Text(Contactname, style:
-                          TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
+                          TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
                       ),
@@ -163,13 +166,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           SizedBox(width: 16,),
                           Text(Gender, style:
-                          TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
+                          TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
                       ),
                       Container(
                         margin: EdgeInsets.only(top:15,left: 97),
-                        child: Text('Emergency Contact', style:
+                        child: Text('Emergency Contact Number', style:
                         TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.blueGrey,letterSpacing: 1.2),
                         ),
                       ),
@@ -185,7 +188,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           SizedBox(width: 16,),
                           Text(Contactno, style:
-                          TextStyle(fontSize: 22,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
+                          TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.white60,letterSpacing: 1.2),
                           ),
                         ],
                       ),
@@ -236,7 +239,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           GestureDetector(
                             onTap: ()async{
                               if(await signOutGoogle()){
-                                print('Error in LogOut');
+                                print('LogOut Successful');
                                 Navigator.pushNamedAndRemoveUntil(
                                     context, '/login_screen', (route) => false);
                               }
