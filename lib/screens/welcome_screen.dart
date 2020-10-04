@@ -18,51 +18,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff0A0E21),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            Text(
-              'Drove',
-              style: TextStyle(
-                  color: Colors.white60,
-                  fontSize: 75,
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Container(
-              height: 200,
-              width: 200,
+      body: SafeArea(
+        child: Padding(
+            padding: EdgeInsets.all(10.0),
+          child: Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               child: Image.asset('images/logo.png'),
             ),
-            SizedBox(
-              height: 250,
-            ),
-            Text(
-              'Made By:',
-              style: TextStyle(
-                  color: Colors.white60,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Text(
-              'Team Ninja Turtles',
-              style: TextStyle(
-                  color: Colors.white60,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
-            ),
-          ],
+          ),
         ),
-      ),
+      )
     );
   }
 

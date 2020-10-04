@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 Widget bottomnav(_currentIndex, context) {
   return CurvedNavigationBar(
-    backgroundColor: Color(0xff272B4D),
+    backgroundColor: Color(0xff0A0E21),
     color: Color(0xff414885),
     buttonBackgroundColor: Colors.blueGrey,
     height: 52.0,

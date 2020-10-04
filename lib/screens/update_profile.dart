@@ -1,7 +1,15 @@
+import 'dart:io';
+
+import 'package:drove/helpers/gallery_image.dart';
 import 'package:drove/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:giffy_dialog/giffy_dialog.dart';
+import 'package:image_picker/image_picker.dart';
+
+
+File image;
+final picker = ImagePicker();
 
 class UpdateProfileScreen extends StatefulWidget {
   @override
@@ -66,16 +74,19 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   ],
                 ),
                 SizedBox(height: 30),
-                Container(
-                    child: CircleAvatar(
-                      radius: 55,
-                      backgroundColor: Color(0xff0A0E21),
+                GestureDetector(
+                  onTap: ()=>getImage(context),
+                  child: Container(
                       child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 45.0,
-                        child: Image.asset('images/boy.png'),
-                      ),
-                    )
+                        radius: 55,
+                        backgroundColor: Color(0xff0A0E21),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 45.0,
+                          child: image != null?Image.file(image):Image.asset('images/boy.png'),
+                        ),
+                      )
+                  ),
                 ),
                 SizedBox(height: 40,),
                 Container(
@@ -222,5 +233,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             ),
           )),
     );
+  }
+  Future getImage(context) async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      if (pickedFile != null) {
+        image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
   }
 }

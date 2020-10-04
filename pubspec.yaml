@@ -40,10 +40,19 @@ dependencies:
   curved_navigation_bar: ^0.3.4
   firebase_database: ^4.1.0
   http: ^0.12.2
+  shared_preferences: ^0.5.12
+  path: ^1.7.0
+  modal_progress_hud: ^0.1.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+    android: true
+    ios: true
+    image_path: "images/logo.png"
 
 flutter:
 

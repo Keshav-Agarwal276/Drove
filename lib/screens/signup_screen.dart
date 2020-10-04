@@ -283,7 +283,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     child: Center(
                         child: Text(
                       'Sign Up',
-                      style: TextStyle(color: Colors.blueGrey, fontSize: 22),
+                      style: TextStyle(color: Colors.white70, fontSize: 22),
                     )),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),

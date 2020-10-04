@@ -57,6 +57,7 @@ class _DetectScreenPageState extends State<DetectScreen>
       setState(() {
         //Set bit to false to allow detection again
         CameraHelper.isDetecting = false;
+
       });
     }, onDone: () {
 
@@ -115,7 +116,7 @@ class _DetectScreenPageState extends State<DetectScreen>
         child: Container(
           height: 200.0,
           width: width,
-          color: Color(0xff272B4D),
+          color: Color(0xff0A0E21),
           child: outputs != null && outputs.isNotEmpty
               ? ListView.builder(
                   itemCount: outputs.length,
@@ -152,7 +153,7 @@ class _DetectScreenPageState extends State<DetectScreen>
               : Center(
                   child: Text("Wating for model to detect..",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: Colors.white70,
                         fontSize: 20.0,
                       ))),
         ),

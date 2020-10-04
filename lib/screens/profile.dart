@@ -1,6 +1,6 @@
 import 'dart:convert';
-
 import 'package:drove/models/bottomnav.dart';
+import 'package:drove/screens/update_profile.dart';
 import 'package:drove/services/auth.dart';
 import 'package:drove/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -118,7 +118,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               radius: 45.0,
-                              child: Image.asset('images/boy.png'),
+                              child: image != null?Image.file(image):Image.asset('images/boy.png'),
                             ),
                           )
                       ),
