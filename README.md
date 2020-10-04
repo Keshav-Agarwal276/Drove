@@ -5,8 +5,8 @@ With the increasing demand for vehicles, there’s been a drastic hike in road a
 The app also has an emergency contact section for the user to fill their emergency contact details in case of unforeseen circumstances.</p> 
 
 
-<a href="">
-         <img alt="Qries" src=" "
+<a href="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png">
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png"
          width=1000" height="600"></a>
 
 ## Getting Started ##
@@ -275,60 +275,31 @@ class MyApp extends StatelessWidget {
 
 ## Demo ##
 <p>
-<a href=" ">
-         <img alt="Qries" src=" "
+<a href="https://github.com/Keshav-Agarwal276/Drove/tree/master/UI">
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/Log%20In%20%E2%80%93%201.png"
          width=300" height="500">
                                 
 <a href=" ">
-         <img alt="Qries" src=" "
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/SignIn.jpg"
          width=300" height="500">  
-                                
-<a href=" t">
-         <img alt="Qries" src=" "
-         width=300" height="500">
- </p>
+</p>
   
  <p> 
-<a href=" ">
-         <img alt="Qries" src=" "
+<a href="https://github.com/Keshav-Agarwal276/Drove/tree/master/UI">
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/Profile.jpg"
          width=300" height="500">
                                 
                                 
-<a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-                                
-<a href=" t">
-         <img alt="Qries" src=" "
-         width=300" height="500">    
+<a href="https://github.com/Keshav-Agarwal276/Drove/tree/master/UI">
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/Update_Profile.jpg"
+         width=300" height="500">  
 </p>
                                 
 <p> 
 <a href=" ">
-         <img alt="Qries" src=" "
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/updated_profile_gif.gif"
          width=300" height="500">
-         
-<a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-                                
-<a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-</p>
-    
-<p>
- <a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-                                
-<a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-<a href=" ">
-         <img alt="Qries" src=" "
-         width=300" height="500">
-</p>       
+</p>   
 For more screenshot open folder Screenshots </a>
 
 ## Conclusion
