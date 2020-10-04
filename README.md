@@ -1,13 +1,12 @@
 # Drove
+<a href="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png">
+         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png"
+         width=1000" height="900"></a>
+				 
 <p>
 With the increasing demand for vehicles, there’s been a drastic hike in road accidents. Accidents due to driver’s drowsiness are one of the main and threatening reasons for road accidents.</p> 
 	<p>In order to reduce accidents due to the driver’s drowsiness, We’ve developed an app to prevent the driver from falling asleep. The app uses machine learning to identify whether the driver is alert or drowsy. In the case, the driver is drowsy the app alerts the driver with a beep. 
 The app also has an emergency contact section for the user to fill their emergency contact details in case of unforeseen circumstances.</p> 
-
-
-<a href="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png">
-         <img alt="Qries" src="https://github.com/Keshav-Agarwal276/Drove/blob/master/UI/logo.png"
-         width=1000" height="600"></a>
 
 ## Getting Started ##
  __Note:__ Make sure your Flutter environment is setup. If not please read <a href="https://flutter.dev/docs">Flutter Documentation</a>.
